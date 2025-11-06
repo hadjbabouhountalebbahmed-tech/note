@@ -121,7 +121,7 @@ export interface FormState {
 }
 
 export interface SectionData {
-  id: keyof Omit<FormState, 'douleur' | 'particularites' | `${string}_medicament` | `${string}_interventions'` | 'respiratoire_o2_litres' | 'quart' | 'gender' | 'admissionCheckboxes' | 'orientation' | 'autonomie' | 'effetsPersonnels' | 'accesVeineux' | 'accesVeineux_gauge' | 'accesVeineux_site' | 'piccLine' | 'piccLine_site' | 'drains' | 'sondes' | 'morse' | 'braden' | 'ciwa' | 'soinsPalliatifs_autres'>;
+  id: keyof Omit<FormState, 'douleur' | 'particularites' | `${string}_medicament` | `${string}_interventions` | 'respiratoire_o2_litres' | 'quart' | 'gender' | 'admissionCheckboxes' | 'orientation' | 'autonomie' | 'effetsPersonnels' | 'accesVeineux' | 'accesVeineux_gauge' | 'accesVeineux_site' | 'piccLine' | 'piccLine_site' | 'drains' | 'sondes' | 'morse' | 'braden' | 'ciwa' | 'soinsPalliatifs_autres'>;
   title: string;
   type: SectionType;
   options: Option[];

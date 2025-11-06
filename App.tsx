@@ -943,7 +943,6 @@ ${allPatientNotes}
             doc.setFontSize(layoutSettings.fontSize);
             doc.setTextColor(0, 0, 0); // Opacity is handled via fillOpacity below, not setTextColor
             doc.setFillColor(0,0,0);
-            // FIX: Corrected method name from setFileCreationDate to setCreationDate for jsPDF.
             doc.setCreationDate(new Date());
 
             const dateX = cmToMm(layoutSettings.positionX);
