@@ -37,8 +37,10 @@ export interface PainState {
   interventionsNonPharma: string[];
 }
 
+export type PainFieldId = 'p' | 'q' | 'r' | 's' | 't' | 'u';
+
 export interface PainField {
-  id: keyof Omit<PainState, 'medicament' | 'interventionsNonPharma' | 'site'>;
+  id: PainFieldId;
   label: string;
   type: 'radio' | 'checkbox';
   options: Option[];
@@ -120,8 +122,23 @@ export interface FormState {
   ciwa: CIWAScaleState;
 }
 
+// Explicit type for section IDs to improve stability and prevent transpilation issues.
+export type FormSectionId =
+  | 'position'
+  | 'etatEveil'
+  | 'signesNeuro'
+  | 'respiratoire'
+  | 'signesVitaux'
+  | 'digestif'
+  | 'urinaire'
+  | 'tegumentaire'
+  | 'geriatrie'
+  | 'soinsPalliatifs'
+  | 'observations'
+  | 'visites';
+
 export interface SectionData {
-  id: keyof Omit<FormState, 'douleur' | 'particularites' | `${string}_medicament` | `${string}_interventions` | 'respiratoire_o2_litres' | 'quart' | 'gender' | 'admissionCheckboxes' | 'orientation' | 'autonomie' | 'effetsPersonnels' | 'accesVeineux' | 'accesVeineux_gauge' | 'accesVeineux_site' | 'piccLine' | 'piccLine_site' | 'drains' | 'sondes' | 'morse' | 'braden' | 'ciwa' | 'soinsPalliatifs_autres'>;
+  id: FormSectionId;
   title: string;
   type: SectionType;
   options: Option[];

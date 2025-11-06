@@ -6,7 +6,7 @@ import jsPDF from 'jspdf';
 import * as docx from 'docx';
 import { saveAs } from 'file-saver';
 import { sectionsData, painFieldsData, initialPainState, initialMorseState, initialBradenState, initialCIWAState, defaultLayoutSettings } from './constants';
-import type { FormState, PainState, SavedState, PatientState, MorseScaleState, BradenScaleState, CIWAScaleState, Option, LayoutSettings, NoteEntry } from './types';
+import type { FormState, PainState, SavedState, PatientState, MorseScaleState, BradenScaleState, CIWAScaleState, Option, LayoutSettings, NoteEntry, PainFieldId } from './types';
 import CollapsibleSection from './components/CollapsibleSection';
 import RadioGroup from './components/RadioGroup';
 import CheckboxGroup from './components/CheckboxGroup';
@@ -450,14 +450,14 @@ const App: React.FC = () => {
     });
   }, [updateActivePatientFormState]);
 
-  const handlePainCheckboxChange = useCallback((field: keyof PainState, value: string) => {
+  const handlePainCheckboxChange = useCallback((field: PainFieldId, value: string) => {
     updateActivePatientFormState(prevFormState => {
         const currentValues = prevFormState.douleur[field] as string[];
         const newValues = currentValues.includes(value) ? currentValues.filter(item => item !== value) : [...currentValues, value];
         return { douleur: { ...prevFormState.douleur, [field]: newValues } };
     });
   }, [updateActivePatientFormState]);
-  const handlePainRadioChange = useCallback((field: keyof PainState, value: string) => updateActivePatientFormState(prev => ({ douleur: { ...prev.douleur, [field]: value } })), [updateActivePatientFormState]);
+  const handlePainRadioChange = useCallback((field: PainFieldId, value: string) => updateActivePatientFormState(prev => ({ douleur: { ...prev.douleur, [field]: value } })), [updateActivePatientFormState]);
   const handlePainSiteChange = useCallback((value: string) => updateActivePatientFormState(prev => ({ douleur: { ...prev.douleur, site: value } })), [updateActivePatientFormState]);
   const handleParticularitesChange = useCallback((value: string) => updateActivePatientFormState(() => ({ particularites: value })), [updateActivePatientFormState]);
   

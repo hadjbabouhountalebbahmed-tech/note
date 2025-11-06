@@ -1,5 +1,5 @@
 import React from 'react';
-import type { PainState, PainField } from '../types';
+import type { PainState, PainField, PainFieldId } from '../types';
 import RadioGroup from './RadioGroup';
 import CheckboxGroup from './CheckboxGroup';
 import { painNonPharmaInterventions } from '../constants';
@@ -7,8 +7,8 @@ import { painNonPharmaInterventions } from '../constants';
 interface PainSectionProps {
   data: PainField[];
   painState: PainState;
-  onCheckboxChange: (field: keyof Omit<PainState, 'medicament' | 'interventionsNonPharma' | 'site'>, value: string) => void;
-  onRadioChange: (field: keyof Omit<PainState, 'medicament' | 'interventionsNonPharma' | 'site'>, value: string) => void;
+  onCheckboxChange: (field: PainFieldId, value: string) => void;
+  onRadioChange: (field: PainFieldId, value: string) => void;
   onSiteChange: (value: string) => void;
   onMedicamentChange: (value: string) => void;
   onNonPharmaChange: (value: string) => void;
